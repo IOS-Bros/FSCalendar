@@ -10,7 +10,7 @@ import FSCalendar
 
 let formatter = DateFormatter()
 var selectDate01 = ""
-//var events: Array<Date> = []
+var events: Array<Date> = []
 
 class ViewController: UIViewController {
 
@@ -18,7 +18,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var lblSchedule: UILabel!
     
     var selectDateType = formatter.date(from: selectDate01)
-    var events: Array<Date> = []
+//    var events: Array<Date> = []
+
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,6 +47,7 @@ class ViewController: UIViewController {
         calendar.delegate = self
         calendar.dataSource = self
         
+        
     }// ViewDidLoad
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,6 +61,11 @@ class ViewController: UIViewController {
         }else{
             print("No Data")
         }
+        calendar.delegate = self
+        calendar.dataSource = self
+//        calendar.setCurrentPage(selectDateType! + 2592000, animated: true)
+        calendar.reloadData()
+        
     }
     
     // 선택한 날짜 보내기
@@ -65,7 +74,7 @@ class ViewController: UIViewController {
             let detail = segue.destination as! AddViewController
             detail.receiveDay(selectDate01)
             events.append(selectDateType!)
-           
+            
             print(events[0])
             
         }

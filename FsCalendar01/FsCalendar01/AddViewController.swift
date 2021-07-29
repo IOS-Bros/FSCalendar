@@ -24,10 +24,17 @@ class AddViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    
+    
     func receiveDay(_ date: String){
         receiveDate = date
     }
 
+    @IBAction func btnInsert(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+        
+        
+    }
     /*
     // MARK: - Navigation
 
